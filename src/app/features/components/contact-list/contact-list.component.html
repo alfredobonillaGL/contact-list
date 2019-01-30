@@ -16,7 +16,8 @@
 
   <div class="card-columns">
     <app-contact *ngFor='let contact of contacts'
-      [contact]="contact">
+      [contact]='contact'
+      (contactsListChanged)='contactsListChanged($event)'>
     </app-contact>    
   </div>
 
