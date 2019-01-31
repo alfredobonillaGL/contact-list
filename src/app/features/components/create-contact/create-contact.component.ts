@@ -30,7 +30,6 @@ export class CreateContactComponent implements OnInit {
   }
 
   save() {
-    console.log('Saved: ' + JSON.stringify(this.contactForm.value));
     if (this.contactForm.valid) {
       if (this.contactForm.dirty) {
         const contact = { ...this.contact, ...this.contactForm.value };
