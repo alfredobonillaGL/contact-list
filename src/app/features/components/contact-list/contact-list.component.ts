@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IContact } from '../../..//core/models/contact';
+import { Contact } from '../../..//core/models/contact';
 import { ContactListService } from 'src/app/core/contact-list.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { ContactListService } from 'src/app/core/contact-list.service';
 })
 export class ContactListComponent implements OnInit {
 
-  contacts: IContact[] = [];
+  contacts: Contact[] = [];
 
-  constructor(private productService: ContactListService) {
+  constructor(private contactsListService: ContactListService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +23,7 @@ export class ContactListComponent implements OnInit {
   }
 
   fetchContacts() {
-    this.productService.getContacts().subscribe (
+    this.contactsListService.getContacts().subscribe (
       contacts => { this.contacts = contacts; },
       error => { console.log('Error retrieving API data: ', error.message); }
     );

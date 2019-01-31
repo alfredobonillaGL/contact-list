@@ -1,5 +1,5 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
-import { IContact } from '../../..//core/models/contact';
+import { Contact } from '../../..//core/models/contact';
 import { ContactListService } from 'src/app/core/contact-list.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ContactListService } from 'src/app/core/contact-list.service';
 })
 export class ContactComponent implements OnInit {
 
-  @Input() contact: IContact;
+  @Input() contact: Contact;
   @Output() contactsListChanged: EventEmitter<boolean> =
     new EventEmitter<boolean>();
 

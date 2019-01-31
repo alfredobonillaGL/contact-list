@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
-import { IContact } from './models/contact';
+import { Contact } from './models/contact';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -12,22 +12,31 @@ export class ContactListService {
 
   constructor(private http: HttpClient) { }
 
-  getContacts(): Observable<IContact[]> {
-    return this.http.get<IContact[]>(environment.apiURL).pipe(
+  getContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(environment.apiURL).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
-  getContact(contactId: string): Observable<IContact[]> {
-    return this.http.get<IContact[]>(`${environment.apiURL}/${contactId}`).pipe(
+  getContact(contactId: string): Observable<Contact> {
+    return this.http.get<Contact>(`${environment.apiURL}/${contactId}`).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
-  deleteContact(contactId: string): Observable<IContact[]> {
-    return this.http.delete<IContact[]>(`${environment.apiURL}/${contactId}`).pipe(
+  createContact(contact: Contact): Observable<Contact> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });    
+    return this.http.post<Contact>(environment.apiURL, contact, { headers: headers })
+      .pipe(
+        tap(data => console.log('created contact: ' + JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
+  deleteContact(contactId: string): Observable<Contact> {
+    return this.http.delete<Contact>(`${environment.apiURL}/${contactId}`).pipe(
       tap(data => console.log('All: ' + JSON.stringify(data))),
       catchError(this.handleError)
     );

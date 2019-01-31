@@ -22,9 +22,6 @@
 .name, .lastname {
   margin: 0px;
 }
-
-.delete {
-  font-size: 14px;
-  color: red;
-  padding: 10px 0;  
+.contact-options {
+  padding-left: 15px;
 }

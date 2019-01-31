@@ -8,6 +8,9 @@ import { ContactComponent } from './features/components/contact/contact.componen
 import { HttpClientModule } from '@angular/common/http';
 import { FirstUpperCaseLetterPipe } from './shared/first-upper-case-letter.pipe';
 import { FormatPhoneNumberPipe } from './shared/format-phone-number.pipe';
+import { ContactDetailsComponent } from './features/components/contact-details/contact-details.component';
+import { CreateContactComponent } from './features/components/create-contact/create-contact.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,15 @@ import { FormatPhoneNumberPipe } from './shared/format-phone-number.pipe';
     ContactListComponent,
     ContactComponent,
     FirstUpperCaseLetterPipe,
-    FormatPhoneNumberPipe
+    FormatPhoneNumberPipe,
+    ContactDetailsComponent,
+    CreateContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
