@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContactListService } from 'src/app/core/contact-list.service';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { Contact } from 'src/app/core/models/contact';
 
 @Component({
